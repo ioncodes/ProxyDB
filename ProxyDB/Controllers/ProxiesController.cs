@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using ProxyDB.Database;
 using ProxyDB.Enums;
 using ProxyDB.Models;
 
@@ -9,6 +10,8 @@ namespace ProxyDB.Controllers
     [ApiController]
     public class ProxiesController : ControllerBase
     {
+        private DatabaseManager _manager = new DatabaseManager();
+
         // GET api/proxies
         [HttpGet]
         public ActionResult<IEnumerable<Proxy>> Get()
