@@ -20,9 +20,9 @@ namespace ProxyDB.Controllers
 
         // GET api/proxies/{id}
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Proxy> Get(string id)
         {
-            return "value";
+            return _manager.GetProxy(id);
         }
 
         // POST api/proxies
