@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProxyDB.Database;
 using ProxyDB.Models;
@@ -43,9 +44,9 @@ namespace ProxyDB.Controllers
 
         // POST api/proxies
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Proxy proxy)
         {
-
+            _manager.AddProxy(proxy);
         }
     }
 }

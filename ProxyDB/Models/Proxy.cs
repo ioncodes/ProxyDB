@@ -7,7 +7,7 @@ using ProxyDB.Enums;
 namespace ProxyDB.Models
 {
     public class Proxy
-    {
+    { 
         [BsonId]
         public ObjectId ID { get; set; }
 

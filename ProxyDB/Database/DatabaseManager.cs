@@ -33,12 +33,13 @@ namespace ProxyDB.Database
             {
                 return null;
             }
+
             return _proxies.Find(
-                i => (port == null      || i.Port == port) &&
-                     (protocol == null  || i.Protocol == _protocol) &&
+                i => (port == null || i.Port == port) &&
+                     (protocol == null || i.Protocol == _protocol) &&
                      (anonymity == null || i.Anonymity == _anonymity) &&
-                     (country == null   || i.Country == country)
-                     ).ToList();
+                     (country == null || i.Country == country)
+            ).ToList();
         }
 
         public Proxy GetProxy(string id)
@@ -52,5 +53,11 @@ namespace ProxyDB.Database
                 return null;
             }
         }
+
+        public void AddProxy(Proxy proxy)
+        {
+            _proxies.InsertOne(proxy);
+        }
     }
 }
+
