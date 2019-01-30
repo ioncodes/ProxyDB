@@ -30,7 +30,15 @@ namespace ProxyDB.Controllers
         [HttpGet("{id}")]
         public ActionResult<Proxy> Get(string id)
         {
-            return _manager.GetProxy(id);
+            var proxy = _manager.GetProxy(id);
+            if (proxy != null)
+            {
+                return proxy;
+            }
+            else
+            {
+                return NotFound("Proxy not found.");
+            }
         }
 
         // POST api/proxies

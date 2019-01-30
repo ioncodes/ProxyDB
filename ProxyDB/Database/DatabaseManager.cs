@@ -43,7 +43,14 @@ namespace ProxyDB.Database
 
         public Proxy GetProxy(string id)
         {
-            return _proxies.Find(document => document.ID == ObjectId.Parse(id)).FirstOrDefault();
+            try
+            {
+                return _proxies.Find(document => document.ID == ObjectId.Parse(id)).FirstOrDefault();
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
