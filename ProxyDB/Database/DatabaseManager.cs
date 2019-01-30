@@ -24,6 +24,7 @@ namespace ProxyDB.Database
         {
             Protocol _protocol = Protocol.HTTP;
             Anonymity _anonymity = Anonymity.Anonymous;
+
             if (protocol != null && !Enum.TryParse(protocol, true, out _protocol))
             {
                 return null;
