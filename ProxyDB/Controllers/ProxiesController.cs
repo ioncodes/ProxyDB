@@ -11,11 +11,19 @@ namespace ProxyDB.Controllers
     {
         private DatabaseManager _manager = new DatabaseManager();
 
-        // GET api/proxies
+        // GET api/proxies?port=&protocol=&anonymity=&country=
         [HttpGet]
-        public ActionResult<IEnumerable<Proxy>> Get()
+        public ActionResult<IEnumerable<Proxy>> Get([FromQuery] int? port, [FromQuery] string protocol, [FromQuery] string anonymity, [FromQuery] string country)
         {
-            return Ok(_manager.GetProxies());
+            var proxies = _manager.GetProxies(port, protocol, anonymity, country);
+            if (proxies != null)
+            {
+                return Ok(proxies);
+            }
+            else
+            {
+                return NotFound("Invalid parameters.");
+            }
         }
 
         // GET api/proxies/{id}
@@ -29,6 +37,7 @@ namespace ProxyDB.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
     }
 }
