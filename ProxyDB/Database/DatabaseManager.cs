@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using ProxyDB.Models;
+using System.Collections.Generic;
 
 namespace ProxyDB.Database
 {
@@ -7,13 +8,18 @@ namespace ProxyDB.Database
     {
         public MongoClient Client { get; }
         public IMongoDatabase Database { get; }
-        public IMongoCollection<Proxy> ProxyCollection { get; }
+        private IMongoCollection<Proxy> _proxies;
 
         public DatabaseManager()
         {
             Client = new MongoClient();
             Database = Client.GetDatabase("proxydb");
-            ProxyCollection = Database.GetCollection<Proxy>("proxies");
+            _proxies = Database.GetCollection<Proxy>("proxies");
+        }
+
+        public IEnumerable<Proxy> GetProxies()
+        {
+            return _proxies.Find(i => true).ToList();
         }
     }
 }

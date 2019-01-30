@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ProxyDB.Database;
-using ProxyDB.Enums;
 using ProxyDB.Models;
 
 namespace ProxyDB.Controllers
@@ -16,17 +15,7 @@ namespace ProxyDB.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Proxy>> Get()
         {
-            return new Proxy[] {
-                new Proxy()
-                {
-                    ID = 0,
-                    IP = "127.0.0.1",
-                    Port = 1337,
-                    Anonymity = Anonymity.Elite,
-                    Protocol = Protocol.SOCKS5,
-                    Country = "US"
-                }
-            };
+            return Ok(_manager.GetProxies());
         }
 
         // GET api/proxies/{id}
