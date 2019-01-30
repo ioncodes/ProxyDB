@@ -10,7 +10,7 @@ namespace ProxyDB.Controllers
     [ApiController]
     public class ProxiesController : ControllerBase
     {
-        private DatabaseManager _manager = new DatabaseManager();
+        private readonly DatabaseManager _manager = new DatabaseManager();
 
         // GET api/proxies?port=&protocol=&anonymity=&country=
         [HttpGet]

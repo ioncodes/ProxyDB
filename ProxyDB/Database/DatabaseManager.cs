@@ -11,7 +11,7 @@ namespace ProxyDB.Database
     {
         public MongoClient Client { get; }
         public IMongoDatabase Database { get; }
-        private IMongoCollection<Proxy> _proxies;
+        private readonly IMongoCollection<Proxy> _proxies;
 
         public DatabaseManager()
         {
